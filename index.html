@@ -88,23 +88,23 @@
         }
 
         .gold-btn {
-            border: 1px solid #8a6d1f;
-            color: #3a2a00;
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            color: #e8d9a8;
             font-weight: 700;
             cursor: pointer;
-            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
-            background-image:
-                linear-gradient(180deg, #fff8d0 0%, #ffe066 25%, #f5c542 50%, #d4a017 75%, #b8860b 100%);
-            background-size: 100% 300%;
-            background-position: 0 0;
-            box-shadow:
-                inset 0 1px 0 rgba(255, 255, 255, 0.6),
-                inset 0 -2px 4px rgba(120, 80, 0, 0.45),
-                0 2px 8px rgba(0, 0, 0, 0.4);
-            transition: transform 0.2s, box-shadow 0.2s, background-position 0.4s;
+            text-shadow: none;
+            background: #12121a;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s, color 0.3s, border-color 0.3s;
         }
 
         .gold-btn:hover {
+            color: #3a2a00;
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+            border-color: #8a6d1f;
+            background-image:
+                linear-gradient(180deg, #fff8d0 0%, #ffe066 25%, #f5c542 50%, #d4a017 75%, #b8860b 100%);
+            background-size: 100% 300%;
             background-position: 0 100%;
             transform: translateY(-2px);
             box-shadow:
@@ -1003,7 +1003,33 @@
                 font-size: 20px;
             }
 
-            footer {
+.nick-link {
+            position: relative;
+            display: inline-block;
+            color: #f5c542;
+            text-decoration: none;
+            overflow: hidden;
+        }
+
+        .nick-link::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 40%;
+            left: -60%;
+            background: linear-gradient(105deg, transparent 0%, rgba(255, 255, 255, 0.75) 50%, transparent 100%);
+            transform: skewX(-20deg);
+            animation: nickShine 3s ease-in-out infinite;
+        }
+
+        @keyframes nickShine {
+            0% { left: -60%; }
+            60% { left: 130%; }
+            100% { left: 130%; }
+        }
+
+        footer {
                 padding: 20px 12px;
                 font-size: 13px;
             }
@@ -1124,7 +1150,7 @@
     </main>
 
     <footer>
-        <p>make by <a href="https://t.me/DanDare007" target="_blank" rel="noopener" style="color: #f5c542; text-decoration: none;">MoDDyDaN</a> x CONSOR</p>
+        <p>make by <a class="nick-link" href="https://t.me/DanDare007" target="_blank" rel="noopener">MoDDyDaN</a> x CONSOR</p>
     </footer>
 
     <div class="modal" id="joinModal">
