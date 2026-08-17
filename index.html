@@ -1036,6 +1036,22 @@
             </p>
         </div>
 
+        <div class="gallery-section panel">
+            <h2 class="section-title">Фото сервера</h2>
+            <div class="carousel" id="carousel">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide"><img src="screenshots/photo_2026-08-17_22-27-39.jpg" alt="Скриншот 1" loading="lazy" onclick="openLightbox(0)"></div>
+                    <div class="carousel-slide"><img src="screenshots/photo_2026-08-17_22-28-26.jpg" alt="Скриншот 2" loading="lazy" onclick="openLightbox(1)"></div>
+                    <div class="carousel-slide"><img src="screenshots/photo_2026-08-17_22-28-32.jpg" alt="Скриншот 3" loading="lazy" onclick="openLightbox(2)"></div>
+                    <div class="carousel-slide"><img src="screenshots/photo_2026-08-17_22-28-37.jpg" alt="Скриншот 4" loading="lazy" onclick="openLightbox(3)"></div>
+                    <div class="carousel-slide"><img src="screenshots/photo_2026-08-17_22-28-40.jpg" alt="Скриншот 5" loading="lazy" onclick="openLightbox(4)"></div>
+                </div>
+                <button class="carousel-arrow prev" onclick="moveCarousel(-1)">&#10094;</button>
+                <button class="carousel-arrow next" onclick="moveCarousel(1)">&#10095;</button>
+                <div class="carousel-dots" id="carouselDots"></div>
+            </div>
+        </div>
+
         <div class="donate-section panel" id="donate">
             <h2 class="section-title">Донат</h2>
             <div class="donate-tabs">
@@ -1079,22 +1095,6 @@
                 <li><span>skinrestorer-2.5.0+1.21-fabric.jar</span><span class="mod-size">212 КБ</span><a href="mods/skinrestorer-2.5.0+1.21-fabric.jar" download>&#11015;</a></li>
                 <li><span>voicechat-fabric-1.21.4-2.6.12.jar</span><span class="mod-size">5.1 МБ</span><a href="mods/voicechat-fabric-1.21.4-2.6.12.jar" download>&#11015;</a></li>
             </ul>
-        </div>
-
-        <div class="gallery-section panel">
-            <h2 class="section-title">Фото сервера</h2>
-            <div class="carousel" id="carousel">
-                <div class="carousel-track" id="carouselTrack">
-                    <div class="carousel-slide"><img src="screenshots/photo_2026-08-17_22-27-39.jpg" alt="Скриншот 1" loading="lazy" onclick="openLightbox(0)"></div>
-                    <div class="carousel-slide"><img src="screenshots/photo_2026-08-17_22-28-26.jpg" alt="Скриншот 2" loading="lazy" onclick="openLightbox(1)"></div>
-                    <div class="carousel-slide"><img src="screenshots/photo_2026-08-17_22-28-32.jpg" alt="Скриншот 3" loading="lazy" onclick="openLightbox(2)"></div>
-                    <div class="carousel-slide"><img src="screenshots/photo_2026-08-17_22-28-37.jpg" alt="Скриншот 4" loading="lazy" onclick="openLightbox(3)"></div>
-                    <div class="carousel-slide"><img src="screenshots/photo_2026-08-17_22-28-40.jpg" alt="Скриншот 5" loading="lazy" onclick="openLightbox(4)"></div>
-                </div>
-                <button class="carousel-arrow prev" onclick="moveCarousel(-1)">&#10094;</button>
-                <button class="carousel-arrow next" onclick="moveCarousel(1)">&#10095;</button>
-                <div class="carousel-dots" id="carouselDots"></div>
-            </div>
         </div>
 
         <div class="lightbox" id="lightbox" onclick="closeLightboxOnBackdrop(event)">
