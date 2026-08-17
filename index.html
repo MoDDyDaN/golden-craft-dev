@@ -559,33 +559,159 @@
             text-align: center;
         }
 
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 16px;
-            max-width: 1000px;
+        .carousel {
+            position: relative;
+            max-width: 800px;
             margin: 0 auto;
-        }
-
-        .gallery-item {
-            display: block;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            border-radius: 10px;
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 12px;
+            background: #101018;
         }
 
-        .gallery-item:hover {
-            transform: translateY(-4px);
-            border-color: #f5c542;
-            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
         }
 
-        .gallery-item img {
-            display: block;
+        .carousel-slide {
+            min-width: 100%;
+            height: 420px;
+        }
+
+        .carousel-slide img {
             width: 100%;
-            height: 180px;
+            height: 100%;
             object-fit: cover;
+            display: block;
+            cursor: zoom-in;
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(20, 20, 30, 0.75);
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            color: #f5c542;
+            font-size: 22px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 5;
+        }
+
+        .carousel-arrow:hover {
+            background: rgba(245, 197, 66, 0.25);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .carousel-arrow.prev {
+            left: 12px;
+        }
+
+        .carousel-arrow.next {
+            right: 12px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px;
+        }
+
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 215, 0, 0.5);
+            background: transparent;
+            cursor: pointer;
+            padding: 0;
+            transition: background 0.3s;
+        }
+
+        .carousel-dot.active {
+            background: #f5c542;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 200;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .lightbox.open {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 92%;
+            max-height: 82vh;
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            border-radius: 10px;
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.15);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 16px;
+            right: 24px;
+            background: none;
+            border: none;
+            color: #f5c542;
+            font-size: 40px;
+            cursor: pointer;
+            z-index: 210;
+        }
+
+        .lightbox-close:hover {
+            color: #fff6d5;
+        }
+
+        .lightbox-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 215, 0, 0.5);
+            color: #f5c542;
+            font-size: 26px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .lightbox-arrow:hover {
+            background: rgba(255, 215, 0, 0.2);
+        }
+
+        .lightbox-arrow.prev {
+            left: 20px;
+        }
+
+        .lightbox-arrow.next {
+            right: 20px;
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #f5c542;
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
         }
 
         .lb-section {
@@ -957,13 +1083,26 @@
 
         <div class="gallery-section panel">
             <h2 class="section-title">Фото сервера</h2>
-            <div class="gallery">
-                <a class="gallery-item" href="screenshots/photo_2026-08-17_22-27-39.jpg" target="_blank" rel="noopener"><img src="screenshots/photo_2026-08-17_22-27-39.jpg" alt="Скриншот 1" loading="lazy"></a>
-                <a class="gallery-item" href="screenshots/photo_2026-08-17_22-28-26.jpg" target="_blank" rel="noopener"><img src="screenshots/photo_2026-08-17_22-28-26.jpg" alt="Скриншот 2" loading="lazy"></a>
-                <a class="gallery-item" href="screenshots/photo_2026-08-17_22-28-32.jpg" target="_blank" rel="noopener"><img src="screenshots/photo_2026-08-17_22-28-32.jpg" alt="Скриншот 3" loading="lazy"></a>
-                <a class="gallery-item" href="screenshots/photo_2026-08-17_22-28-37.jpg" target="_blank" rel="noopener"><img src="screenshots/photo_2026-08-17_22-28-37.jpg" alt="Скриншот 4" loading="lazy"></a>
-                <a class="gallery-item" href="screenshots/photo_2026-08-17_22-28-40.jpg" target="_blank" rel="noopener"><img src="screenshots/photo_2026-08-17_22-28-40.jpg" alt="Скриншот 5" loading="lazy"></a>
+            <div class="carousel" id="carousel">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide"><img src="screenshots/photo_2026-08-17_22-27-39.jpg" alt="Скриншот 1" loading="lazy" onclick="openLightbox(0)"></div>
+                    <div class="carousel-slide"><img src="screenshots/photo_2026-08-17_22-28-26.jpg" alt="Скриншот 2" loading="lazy" onclick="openLightbox(1)"></div>
+                    <div class="carousel-slide"><img src="screenshots/photo_2026-08-17_22-28-32.jpg" alt="Скриншот 3" loading="lazy" onclick="openLightbox(2)"></div>
+                    <div class="carousel-slide"><img src="screenshots/photo_2026-08-17_22-28-37.jpg" alt="Скриншот 4" loading="lazy" onclick="openLightbox(3)"></div>
+                    <div class="carousel-slide"><img src="screenshots/photo_2026-08-17_22-28-40.jpg" alt="Скриншот 5" loading="lazy" onclick="openLightbox(4)"></div>
+                </div>
+                <button class="carousel-arrow prev" onclick="moveCarousel(-1)">&#10094;</button>
+                <button class="carousel-arrow next" onclick="moveCarousel(1)">&#10095;</button>
+                <div class="carousel-dots" id="carouselDots"></div>
             </div>
+        </div>
+
+        <div class="lightbox" id="lightbox" onclick="closeLightboxOnBackdrop(event)">
+            <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+            <button class="lightbox-arrow prev" onclick="lightboxMove(-1)">&#10094;</button>
+            <img id="lightboxImg" src="" alt="Просмотр фото">
+            <button class="lightbox-arrow next" onclick="lightboxMove(1)">&#10095;</button>
+            <div class="lightbox-counter" id="lightboxCounter"></div>
         </div>
 
         <div class="lb-section panel">
@@ -1008,6 +1147,65 @@
             document.getElementById('planSponsor').classList.toggle('active', plan === 'sponsor');
             document.getElementById('planEnchant').classList.toggle('active', plan === 'enchant');
         }
+
+        var slideIndex = 0;
+        var slides = document.querySelectorAll('#carouselTrack .carousel-slide');
+        var dotsContainer = document.getElementById('carouselDots');
+        var lightboxIndex = 0;
+
+        slides.forEach(function (_, i) {
+            var dot = document.createElement('button');
+            dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', 'Слайд ' + (i + 1));
+            dot.onclick = function () { goToSlide(i); };
+            dotsContainer.appendChild(dot);
+        });
+
+        function goToSlide(i) {
+            slideIndex = (i + slides.length) % slides.length;
+            document.getElementById('carouselTrack').style.transform = 'translateX(-' + slideIndex * 100 + '%)';
+            document.querySelectorAll('.carousel-dot').forEach(function (d, di) {
+                d.classList.toggle('active', di === slideIndex);
+            });
+        }
+
+        function moveCarousel(dir) {
+            goToSlide(slideIndex + dir);
+        }
+
+        function openLightbox(i) {
+            lightboxIndex = i;
+            showLightbox();
+            document.getElementById('lightbox').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function closeLightboxOnBackdrop(e) {
+            if (e.target === e.currentTarget) closeLightbox();
+        }
+
+        function lightboxMove(dir) {
+            lightboxIndex = (lightboxIndex + dir + slides.length) % slides.length;
+            showLightbox();
+        }
+
+        function showLightbox() {
+            var img = slides[lightboxIndex].querySelector('img');
+            document.getElementById('lightboxImg').src = img.src;
+            document.getElementById('lightboxCounter').textContent = (lightboxIndex + 1) + ' / ' + slides.length;
+        }
+
+        document.addEventListener('keydown', function (e) {
+            if (!document.getElementById('lightbox').classList.contains('open')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') lightboxMove(-1);
+            if (e.key === 'ArrowRight') lightboxMove(1);
+        });
     </script>
 </body>
 </html>
