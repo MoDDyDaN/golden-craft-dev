@@ -1,0 +1,14 @@
+__pycache__
+*.pyc
+.git
+.github
+node_modules
+*.log
+.env
+*.md
+*.txt
+mods
+mods.zip
+screenshots
+index.html
+LICENSE
