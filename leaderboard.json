@@ -1,0 +1,22 @@
+[
+  {
+    "nick": "Player1",
+    "amount": 500
+  },
+  {
+    "nick": "Player2",
+    "amount": 300
+  },
+  {
+    "nick": "Player3",
+    "amount": 200
+  },
+  {
+    "nick": "Player4",
+    "amount": 150
+  },
+  {
+    "nick": "Player5",
+    "amount": 89
+  }
+]

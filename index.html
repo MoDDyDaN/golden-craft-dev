@@ -1107,8 +1107,10 @@
 
         <div class="lb-section panel">
             <h2 class="section-title">Лидерборд донатеров</h2>
-            <p class="lb-empty">Пока здесь никого нет.<br>Стань первым — и войди в историю сервера! &#128170;</p>
-        </div>
+            <div id="leaderboardContent">
+              <p class="lb-empty">Загрузка...</p>
+            </div>
+          </div>
 
         <div class="feedback-block panel">
             <h2>Вопросы и предложения</h2>
@@ -1206,6 +1208,61 @@
             if (e.key === 'ArrowLeft') lightboxMove(-1);
             if (e.key === 'ArrowRight') lightboxMove(1);
         });
+
+        async function loadLeaderboard() {
+            try {
+                var res = await fetch('leaderboard.json');
+                if (!res.ok) throw new Error('Failed to load');
+                var data = await res.json();
+                renderLeaderboard(data);
+            } catch (e) {
+                document.getElementById('leaderboardContent').innerHTML =
+                    '<p class="lb-empty">Не удалось загрузить лидерборд</p>';
+            }
+        }
+
+        function renderLeaderboard(data) {
+            if (!data || data.length === 0) {
+                document.getElementById('leaderboardContent').innerHTML =
+                    '<p class="lb-empty">Пока здесь никого нет.<br>Стань первым — и войди в историю сервера! &#128170;</p>';
+                return;
+            }
+            var html = '<div class="podium">';
+            if (data.length >= 2) {
+                html += '<div class="podium-card second"><div class="podium-rank">&#129352;</div>';
+                html += '<div class="podium-name">' + escapeHtml(data[1].nick) + '</div>';
+                html += '<div class="podium-amount">' + data[1].amount + '&#8381;</div></div>';
+            }
+            if (data.length >= 1) {
+                html += '<div class="podium-card first"><div class="podium-rank">&#129351;</div>';
+                html += '<div class="podium-name">' + escapeHtml(data[0].nick) + '</div>';
+                html += '<div class="podium-amount">' + data[0].amount + '&#8381;</div></div>';
+            }
+            if (data.length >= 3) {
+                html += '<div class="podium-card third"><div class="podium-rank">&#129353;</div>';
+                html += '<div class="podium-name">' + escapeHtml(data[2].nick) + '</div>';
+                html += '<div class="podium-amount">' + data[2].amount + '&#8381;</div></div>';
+            }
+            html += '</div>';
+            if (data.length > 3) {
+                html += '<ul class="lb-list">';
+                for (var i = 3; i < data.length; i++) {
+                    html += '<li><span class="lb-rank">' + (i + 1) + '</span>';
+                    html += '<span class="lb-name">' + escapeHtml(data[i].nick) + '</span>';
+                    html += '<span class="lb-amount">' + data[i].amount + '&#8381;</span></li>';
+                }
+                html += '</ul>';
+            }
+            document.getElementById('leaderboardContent').innerHTML = html;
+        }
+
+        function escapeHtml(text) {
+            var div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        document.addEventListener('DOMContentLoaded', loadLeaderboard);
     </script>
 </body>
 </html>
