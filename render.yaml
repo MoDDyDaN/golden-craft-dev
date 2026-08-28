@@ -18,4 +18,3 @@ services:
         sync: false
       - key: GH_TOKEN
         sync: false
-    instanceType: free
