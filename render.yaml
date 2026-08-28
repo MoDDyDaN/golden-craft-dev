@@ -1,13 +1,9 @@
 services:
-  - type: background-worker
+  - type: worker
     name: golden-craft-bot
     env: docker
     dockerfilePath: ./Dockerfile
     envVars:
-      - key: BOT_TOKEN
-        sync: false
-      - key: GH_TOKEN
-        sync: false
       - key: REPO_OWNER
         value: MoDDyDaN
       - key: REPO_NAME
@@ -22,5 +18,4 @@ services:
         sync: false
       - key: GH_TOKEN
         sync: false
-    # Небольшой инстанс бесплатно
     instanceType: free
